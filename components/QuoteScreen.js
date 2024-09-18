@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, AsyncStorage } from "react-native";
+import { StyleSheet, Text, View, AsyncStorage, TextInput } from "react-native";
 
 export default class QuoteScreen extends Component {
   constructor() {
@@ -9,6 +9,8 @@ export default class QuoteScreen extends Component {
       quote: ""
     };
   }
+
+
 
   render() {
     const styles = StyleSheet.create({
@@ -26,7 +28,8 @@ export default class QuoteScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>Hello {this.state.name}!</Text>
+
+        
         <Text>{this.state.quote.content}</Text>
         <Text style={styles.alignRight}>
           {this.state.quote.author ? " - " + this.state.quote.author : ""}
@@ -36,31 +39,13 @@ export default class QuoteScreen extends Component {
   }
 
   componentDidMount() {
-    this.storeData();
-    this.getData();
+ 
     this.fetchQuote().then(response => {
       this.setState({ quote: response });
     });
   }
 
-  storeData = async () => {
-    try {
-      await AsyncStorage.setItem("user_name", "Simon Gomes");
-    } catch (e) {
-      // saving error
-    }
-  };
-  getData = async () => {
-    try {
-      const value = await AsyncStorage.getItem("user_name");
-      if (value !== null) {
-        // value previously stored
-        this.setState({ name: value });
-      }
-    } catch (e) {
-      // error reading value
-    }
-  };
+
 
   fetchQuote = async () => {
     try {
