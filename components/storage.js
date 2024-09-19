@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 let STORAGE_KEY = '@user_input';
 
-const App = () => {
+const Storaging = () => {
     const [input,setInput] = useState('');
 
 
@@ -48,27 +48,7 @@ useEffect(() => {
     readData();
   }, []);
 
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>AsyncStorage React Native</Text>
-      </View>
-      <View style={styles.panel}>
-        <Text style={styles.label}>Enter your input here:</Text>
-        <TextInput
-          style={styles.inputField}
-          value={input}
-          placeholder="Enter"
-          onChangeText={onChangeText}
-          onSubmitEditing={onSubmitEditing}
-        />
-        <Text style={styles.text}>Your input is {input}</Text>
-        <Pressable onPress={clearStorage} style={styles.button}>
-          <Text style={styles.buttonText}>Clear Storage</Text>
-        </Pressable>
-      </View>
-    </View>
-  );
+ 
   };
-export default App;
+export default Storaging;
 
